@@ -1,0 +1,9 @@
+dependencies {
+
+    compile project(':domain-usecase')
+    //Library dependencies
+    compile('org.springframework.boot:spring-boot-starter-webflux') {
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+        exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+    }
+}

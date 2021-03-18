@@ -1,0 +1,5 @@
+dependencies {
+    //Compile dependencies
+    compile("org.springframework.boot:spring-boot-starter-webflux")
+    compile("com.jayway.jsonpath:json-path")
+}

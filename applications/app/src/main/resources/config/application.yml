@@ -1,0 +1,14 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+
+  data:
+    mongodb:
+      uri: ##
+      database: test
+
+
+
