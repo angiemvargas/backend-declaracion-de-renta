@@ -9,7 +9,7 @@ public class Documment {
     @Id
     private Integer id;
 
-    private Integer user_id;
+    private Integer userId;
 
     private String name;
 

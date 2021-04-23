@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Accountant {
 
     @Id
-    private Integer user_id;
+    private Integer userId;
 
     private String contactEmail;
 
