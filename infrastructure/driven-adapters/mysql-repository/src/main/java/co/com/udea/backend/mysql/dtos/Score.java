@@ -11,7 +11,7 @@ public class Score {
 
     private Integer value;
 
-    private Integer user_id;
+    private Integer userId;
 
-    private Integer accountant_user_id;
+    private Integer accountant;
 }
