@@ -1,7 +1,7 @@
 package co.com.udea.backend.mysql.repository;
 
-import co.com.udea.backend.mysql.dtos.Documment;
+import co.com.udea.backend.mysql.dtos.DocummentData;
 import org.springframework.data.repository.CrudRepository;
 
-public interface DocummentRepository extends CrudRepository<Documment, Integer> {
+public interface DocummentRepository extends CrudRepository<DocummentData, Integer> {
 }

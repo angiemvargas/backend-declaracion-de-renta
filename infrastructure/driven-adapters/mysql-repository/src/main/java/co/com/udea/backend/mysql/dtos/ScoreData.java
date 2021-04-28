@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Score {
+public class ScoreData {
 
     @Id
     private Integer id;

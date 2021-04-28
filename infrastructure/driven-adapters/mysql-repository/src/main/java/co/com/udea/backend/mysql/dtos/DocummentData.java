@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Documment {
+public class DocummentData {
 
     @Id
     private Integer id;

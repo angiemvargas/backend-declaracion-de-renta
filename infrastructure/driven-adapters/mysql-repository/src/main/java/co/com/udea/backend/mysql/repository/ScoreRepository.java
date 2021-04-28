@@ -1,7 +1,7 @@
 package co.com.udea.backend.mysql.repository;
 
-import co.com.udea.backend.mysql.dtos.Score;
+import co.com.udea.backend.mysql.dtos.ScoreData;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ScoreRepository extends CrudRepository<Score, Integer> {
+public interface ScoreRepository extends CrudRepository<ScoreData, Integer> {
 }

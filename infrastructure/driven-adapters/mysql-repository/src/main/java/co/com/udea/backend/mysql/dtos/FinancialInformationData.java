@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class FinancialInformation {
+public class FinancialInformationData {
 
     @Id
     private Integer user_id;
