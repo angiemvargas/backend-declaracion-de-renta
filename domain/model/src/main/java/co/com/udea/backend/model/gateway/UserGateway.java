@@ -6,4 +6,6 @@ import reactor.core.publisher.Mono;
 public interface UserGateway {
 
     Mono<User> createUser(User user);
+
+    Mono<User> updateUser(User user);
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 @Builder
 public class User {
 
+    private Integer id;
     private String facebookId;
     private String googleId;
     private String email;
@@ -14,5 +15,7 @@ public class User {
     private String lastName;
     private String documentId;
     private String documentType;
+    private String phoneNumber;
+    private String role;
 
 }

@@ -21,6 +21,20 @@ public class UserAdapter implements UserGateway {
                 .flatMap(userData1 -> mapperDataToDto(userData));
     }
 
+    @Override
+    public Mono<User> updateUser(User user) {
+        return Mono.just(userRepository.findById(user.getId()).get())
+                .flatMap(userData -> setInformation(user, userData))
+                .flatMap(userUpdate -> Mono.just(userRepository.save(userUpdate)))
+                .thenReturn(user);
+    }
+
+    private Mono<UserData> setInformation(User user, UserData userData){
+        userData.setPhoneNumber(user.getPhoneNumber());
+        userData.setRole(user.getRole());
+        return Mono.just(userData);
+    }
+
     private UserData mapperDtoToData(User user){
         UserData userData = new UserData();
         userData.setFacebookId(user.getFacebookId());

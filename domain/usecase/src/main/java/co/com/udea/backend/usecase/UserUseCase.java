@@ -13,16 +13,23 @@ public class UserUseCase {
     public Mono<User> createUser(User user){
         return userGateway.createUser(user);
     }
+    public Mono<User> updateUser(User user){
+        return userGateway.updateUser(user);
+    }
 
-    public void validateId(User user){
+    private void validateId(User user){
 
     }
 
-    public void validateIdentification(User user){
+    private void validateSocialRedId(){
 
     }
 
-    public void validatePersonalInformation(User user){
+    private void validateIdentification(User user){
+
+    }
+
+    private void validatePersonalInformation(User user){
 
     }
 }
