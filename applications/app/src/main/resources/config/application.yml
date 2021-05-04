@@ -4,11 +4,13 @@ server:
 spring:
   main:
     allow-bean-definition-overriding: true
-
-  data:
-    mongodb:
-      uri: ##
-      database: test
+  jpa:
+    hibernate:
+      ddl-auto: none  #update
+  datasource:
+    url: jdbc:mysql://88.211.101.187:3306/petcnavv_rent
+    username: petcnavv_rent
+    password: 46gpLt+K1g2YO.
 
 
 

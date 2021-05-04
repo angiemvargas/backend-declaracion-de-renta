@@ -3,9 +3,7 @@ dependencies {
     //Compile Projects
     compile project(':domain-model')
     compile project(":driven-adapters-external-services")
-    compile project(':driven-adapters-mongodb-repository')
-    compile project(':driven-adapters-postgresql-repository')
-    compile project(':driven-adapters-pubsub-repository')
+    compile project(':driven-adapters-mysql-repository')
     
     compile group: 'com.google.code.gson', name: 'gson', version: '2.8.6'
 }

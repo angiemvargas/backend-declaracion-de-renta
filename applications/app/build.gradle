@@ -6,9 +6,7 @@ dependencies {
     compile project(':domain-usecase')
     compile project(':driven-adapters-adapters-repository')
     compile project(":driven-adapters-external-services")
-    compile project(':driven-adapters-mongodb-repository')
-    compile project(':driven-adapters-postgresql-repository')
-    compile project(':driven-adapters-pubsub-repository')
+    compile project(':driven-adapters-mysql-repository')
     compile project(":entry-points-reactive-web")
 
     //Compile Dependencies

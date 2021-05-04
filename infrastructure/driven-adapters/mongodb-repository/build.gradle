@@ -1,9 +1,0 @@
-dependencies {
-    
-    //Compile Projects
-    compile project(':domain-model')
-
-    //Compile Libraries
-    compile('org.springframework.boot:spring-boot-starter-data-mongodb-reactive')
-    compile group: 'commons-beanutils', name: 'commons-beanutils', version: '1.9.4'
-}
