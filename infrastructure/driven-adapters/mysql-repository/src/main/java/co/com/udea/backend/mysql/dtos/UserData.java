@@ -1,33 +1,34 @@
 package co.com.udea.backend.mysql.dtos;
 
-import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 
 @Entity
+@Table(name = "user")
 @Data
 public class UserData {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String facebookId;
+    private String facebookid;
 
-    private String googleId;
+    private String googleid;
 
     private String email;
 
-    private String firstName;
+    private String firstname;
 
-    private String lastName;
+    private String lastname;
 
-    private String documentId;
+    private String documentid;
 
-    private String documentType;
+    private String documenttype;
 
-    private String phoneNumber;
+    private String phonenumber;
 
     private String role;
 

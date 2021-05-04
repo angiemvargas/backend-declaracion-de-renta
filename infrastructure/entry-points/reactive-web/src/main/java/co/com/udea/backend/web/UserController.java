@@ -15,6 +15,7 @@ public class UserController {
 
     @PostMapping("/create")
     public Mono<User> createUser(@RequestBody User user){
+
         return userUseCase.createUser(user);
     }
 

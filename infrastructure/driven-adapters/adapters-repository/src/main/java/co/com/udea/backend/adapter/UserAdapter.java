@@ -30,32 +30,32 @@ public class UserAdapter implements UserGateway {
     }
 
     private Mono<UserData> setInformation(User user, UserData userData){
-        userData.setPhoneNumber(user.getPhoneNumber());
+        userData.setPhonenumber(user.getPhoneNumber());
         userData.setRole(user.getRole());
         return Mono.just(userData);
     }
 
     private UserData mapperDtoToData(User user){
         UserData userData = new UserData();
-        userData.setFacebookId(user.getFacebookId());
-        userData.setGoogleId(user.getGoogleId());
+        userData.setFacebookid(user.getFacebookId());
+        userData.setGoogleid(user.getGoogleId());
         userData.setEmail(user.getEmail());
-        userData.setFirstName(user.getFirstName());
-        userData.setLastName(user.getLastName());
-        userData.setDocumentId(user.getDocumentId());
-        userData.setDocumentType(user.getDocumentType());
+        userData.setFirstname(user.getFirstName());
+        userData.setLastname(user.getLastName());
+        userData.setDocumentid(user.getDocumentId());
+        userData.setDocumenttype(user.getDocumentType());
         return userData;
     }
 
     private Mono<User> mapperDataToDto(UserData userData){
         return Mono.just(User.builder()
-                .facebookId(userData.getFacebookId())
-                .googleId(userData.getGoogleId())
+                .facebookId(userData.getFacebookid())
+                .googleId(userData.getGoogleid())
                 .email(userData.getEmail())
-                .firstName(userData.getFirstName())
-                .lastName(userData.getLastName())
-                .documentId(userData.getDocumentId())
-                .documentType(userData.getDocumentType())
+                .firstName(userData.getFirstname())
+                .lastName(userData.getLastname())
+                .documentId(userData.getDocumentid())
+                .documentType(userData.getDocumenttype())
                 .build());
     }
 }
