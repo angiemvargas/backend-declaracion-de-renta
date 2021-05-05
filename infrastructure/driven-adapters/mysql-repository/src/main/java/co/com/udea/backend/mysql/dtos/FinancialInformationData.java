@@ -1,19 +1,25 @@
 package co.com.udea.backend.mysql.dtos;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.Data;
+
+import javax.persistence.*;
 
 @Entity
+@Table(name = "financial_information")
+@Data
 public class FinancialInformationData {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer user_id;
 
     private Integer income;
 
     private Integer consuption;
 
-    private Integer bankConsignements;
+    private Integer bankconsignements;
 
-    private Integer assetsValue;
+    private Integer assetsvalue;
+
+    private Integer liabilitiesvalue;
 }
