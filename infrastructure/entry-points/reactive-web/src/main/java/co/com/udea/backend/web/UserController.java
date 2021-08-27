@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping(path="/api")
+@RequestMapping(path="/user")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -15,7 +15,6 @@ public class UserController {
 
     @PostMapping("/create")
     public Mono<User> createUser(@RequestBody User user){
-
         return userUseCase.createUser(user);
     }
 
