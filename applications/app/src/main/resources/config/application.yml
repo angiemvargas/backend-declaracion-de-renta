@@ -8,9 +8,8 @@ spring:
     hibernate:
       ddl-auto: none  #update
   datasource:
-    url: jdbc:mysql://alemg.educationhost.cloud:3306/petcnavv_rent
-    username: petcnavv_rent
-    password: 46gpLt+K1g2YO.
-
-
+    url: jdbc:mysql://db-mysql-nyc1-renta-do-user-9756002-0.b.db.ondigitalocean.com:25060/renta
+    username: doadmin
+    password: zuJc9ymf1YUFRpgq
+    platform:
 

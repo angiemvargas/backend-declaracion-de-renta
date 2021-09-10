@@ -44,6 +44,8 @@ public class UserAdapter implements UserGateway {
         userData.setLastname(user.getLastName());
         userData.setDocumentid(user.getDocumentId());
         userData.setDocumenttype(user.getDocumentType());
+        userData.setPhonenumber(user.getPhoneNumber());
+        userData.setRole(user.getRole());
         return userData;
     }
 
@@ -56,6 +58,8 @@ public class UserAdapter implements UserGateway {
                 .lastName(userData.getLastname())
                 .documentId(userData.getDocumentid())
                 .documentType(userData.getDocumenttype())
+                .phoneNumber(userData.getPhonenumber())
+                .role(userData.getRole())
                 .build());
     }
 }
