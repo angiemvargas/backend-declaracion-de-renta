@@ -44,7 +44,7 @@ public class UserController {
         }
 
         User user = User.builder()
-                .username(userRequest.getEmail())
+                .username(userRequest.getIdGoogle())
                 .password(encoder.encode(userRequest.getIdGoogle()))
                 .email(userRequest.getEmail())
                 .documentId(userRequest.getDocumentId())
