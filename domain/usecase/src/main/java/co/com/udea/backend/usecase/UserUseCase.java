@@ -17,6 +17,10 @@ public class UserUseCase {
         return userGateway.updateUser(user);
     }
 
+    public User findByEmail(String email){
+        return userGateway.findByEmail(email);
+    }
+
     private void validateId(User user){
 
     }

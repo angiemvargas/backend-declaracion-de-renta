@@ -8,6 +8,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
+import java.util.Collections;
+import java.util.Objects;
+
 @Repository
 @RequiredArgsConstructor
 public class UserAdapter implements UserGateway {
@@ -18,7 +21,7 @@ public class UserAdapter implements UserGateway {
     public Mono<User> createUser(User user) {
         UserData userData = mapperDtoToData(user);
         return Mono.just(userRepository.save(userData))
-                .flatMap(userData1 -> mapperDataToDto(userData));
+                .flatMap(userData1 -> Mono.just(mapperDataToDto(userData)));
     }
 
     @Override
@@ -29,37 +32,43 @@ public class UserAdapter implements UserGateway {
                 .thenReturn(user);
     }
 
+    @Override
+    public User findByEmail(String username) {
+        UserData data =  userRepository.findByEmail(username);
+        return Objects.nonNull(data) ? mapperDataToDto(data) : null;
+    }
+
     private Mono<UserData> setInformation(User user, UserData userData){
         userData.setPhonenumber(user.getPhoneNumber());
-        userData.setRole(user.getRole());
+        userData.setRole(user.getRole().get(0));
         return Mono.just(userData);
     }
 
     private UserData mapperDtoToData(User user){
         UserData userData = new UserData();
-        userData.setFacebookid(user.getFacebookId());
-        userData.setGoogleid(user.getGoogleId());
+        userData.setFacebookid(user.getUsername());
+        userData.setGoogleid(user.getPassword());
         userData.setEmail(user.getEmail());
         userData.setFirstname(user.getFirstName());
         userData.setLastname(user.getLastName());
         userData.setDocumentid(user.getDocumentId());
         userData.setDocumenttype(user.getDocumentType());
         userData.setPhonenumber(user.getPhoneNumber());
-        userData.setRole(user.getRole());
+        userData.setRole(user.getRole().get(0));
         return userData;
     }
 
-    private Mono<User> mapperDataToDto(UserData userData){
-        return Mono.just(User.builder()
-                .facebookId(userData.getFacebookid())
-                .googleId(userData.getGoogleid())
+    private User mapperDataToDto(UserData userData){
+        return User.builder()
+                .username(userData.getFacebookid())
+                .password(userData.getGoogleid())
                 .email(userData.getEmail())
                 .firstName(userData.getFirstname())
                 .lastName(userData.getLastname())
                 .documentId(userData.getDocumentid())
                 .documentType(userData.getDocumenttype())
                 .phoneNumber(userData.getPhonenumber())
-                .role(userData.getRole())
-                .build());
+                .role(Collections.singletonList(userData.getRole()))
+                .build();
     }
 }
