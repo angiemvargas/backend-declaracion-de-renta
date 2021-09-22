@@ -8,4 +8,6 @@ public interface UserGateway {
     Mono<User> createUser(User user);
 
     Mono<User> updateUser(User user);
+
+    User findByEmail(String username);
 }
