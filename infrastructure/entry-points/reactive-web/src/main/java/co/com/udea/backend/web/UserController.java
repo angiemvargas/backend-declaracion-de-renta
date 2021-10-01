@@ -3,6 +3,7 @@ package co.com.udea.backend.web;
 import co.com.udea.backend.model.entities.User;
 import co.com.udea.backend.usecase.UserUseCase;
 import co.com.udea.backend.web.dtos.LoginRequest;
+import co.com.udea.backend.web.dtos.MessageResponse;
 import co.com.udea.backend.web.dtos.TokenResponse;
 import co.com.udea.backend.web.dtos.UserRequest;
 import co.com.udea.backend.web.security.jwt.JwtUtils;
@@ -40,7 +41,7 @@ public class UserController {
         if (Objects.nonNull(userDB)){
             return Mono.just(ResponseEntity
                     .badRequest()
-                    .body("Error: el email ya existe"));
+                    .body(MessageResponse.builder().message("Error: el email ya existe").build()));
         }
 
         User user = User.builder()
@@ -58,7 +59,7 @@ public class UserController {
         return userUseCase.createUser(user)
                 .thenReturn(ResponseEntity.ok()
                 .contentType(MediaType.APPLICATION_JSON)
-                .body("El usuario se a creado exitosamente"));
+                .body(MessageResponse.builder().message("El usuario se a creado exitosamente").build()));
 
     }
 
