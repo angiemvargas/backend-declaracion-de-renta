@@ -29,6 +29,12 @@ public class FinancialInformationAdapter implements FinancialInformationGateway 
                 .thenReturn(financialInformation);
     }
 
+    @Override
+    public Mono<FinancialInformation> getFinancialInformationById(Integer id) {
+        return Mono.just(financialInformationRepository.findById(id).orElse(new FinancialInformationData()))
+                .flatMap(this::mapperDataToDto);
+    }
+
     private Mono<FinancialInformationData> setInformacion(FinancialInformation dto, FinancialInformationData data){
         data.setIncome(dto.getIncome());
         data.setConsuption(dto.getConsuption());

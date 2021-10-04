@@ -60,6 +60,7 @@ public class UserAdapter implements UserGateway {
 
     private User mapperDataToDto(UserData userData){
         return User.builder()
+                .id(userData.getId())
                 .username(userData.getFacebookid())
                 .password(userData.getGoogleid())
                 .email(userData.getEmail())
