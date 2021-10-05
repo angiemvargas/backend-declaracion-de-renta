@@ -10,7 +10,6 @@ import javax.persistence.*;
 public class FinancialInformationData {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer user_id;
 
     private Integer income;
