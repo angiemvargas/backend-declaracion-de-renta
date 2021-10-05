@@ -8,4 +8,6 @@ public interface FinancialInformationGateway {
     Mono<FinancialInformation> createFinancialInformation(FinancialInformation financialInformation);
 
     Mono<FinancialInformation> updateFinancialInformation(FinancialInformation financialInformation);
+
+    Mono<FinancialInformation> getFinancialInformationById(Integer id);
 }

@@ -24,7 +24,7 @@ import java.util.Objects;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping(path="/user")
+@RequestMapping(path = "/user")
 @RequiredArgsConstructor
 public class UserController {
 
@@ -34,11 +34,11 @@ public class UserController {
     private final PasswordEncoder encoder;
 
     @PostMapping("/create")
-    public Mono<ResponseEntity> createUser(@RequestBody UserRequest userRequest){
+    public Mono<ResponseEntity> createUser(@RequestBody UserRequest userRequest) {
 
         User userDB = userUseCase.findByEmail(userRequest.getEmail());
 
-        if (Objects.nonNull(userDB)){
+        if (Objects.nonNull(userDB)) {
             return Mono.just(ResponseEntity
                     .badRequest()
                     .body(MessageResponse.builder().message("Error: el email ya existe").build()));
@@ -58,8 +58,8 @@ public class UserController {
 
         return userUseCase.createUser(user)
                 .thenReturn(ResponseEntity.ok()
-                .contentType(MediaType.APPLICATION_JSON)
-                .body(MessageResponse.builder().message("El usuario se a creado exitosamente").build()));
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .body(MessageResponse.builder().message("El usuario se a creado exitosamente").build()));
 
     }
 
@@ -82,7 +82,8 @@ public class UserController {
     }
 
     @PutMapping("/update")
-    public Mono<User> updateUser(@RequestBody User user){
+    public Mono<User> updateUser(@RequestBody User user) {
         return userUseCase.updateUser(user);
     }
+
 }
