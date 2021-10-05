@@ -21,12 +21,14 @@ public class FinancialInformationUseCase {
     private final FinancialInformationGateway financialInformationGateway;
     private final UserGateway userGateway;
 
-    public Mono<FinancialInformation> createFinancialInformation(FinancialInformation financialInformation) {
-        return financialInformationGateway.createFinancialInformation(financialInformation);
+    public Mono<FinancialInformation> createFinancialInformation(FinancialInformation financialInformation, String username) {
+        return Mono.just(userGateway.findByEmail(username))
+        .flatMap(user -> financialInformationGateway.createFinancialInformation(factoryFinancial(financialInformation).userId(user.getId()).build()));
     }
 
-    public Mono<FinancialInformation> updateFinancialInformation(FinancialInformation financialInformation) {
-        return financialInformationGateway.updateFinancialInformation(financialInformation);
+    public Mono<FinancialInformation> updateFinancialInformation(FinancialInformation financialInformation, String username) {
+        return Mono.just(userGateway.findByEmail(username))
+                .flatMap(user -> financialInformationGateway.updateFinancialInformation(factoryFinancial(financialInformation).userId(user.getId()).build()));
     }
 
     public Mono<FinancialInformation> getFinancialInformationById(String username) {
@@ -49,5 +51,16 @@ public class FinancialInformationUseCase {
             return Mono.just(Boolean.TRUE);
         }
         return Mono.just(Boolean.FALSE);
+    }
+
+    private FinancialInformation.FinancialInformationBuilder factoryFinancial(FinancialInformation financialInformation){
+        return FinancialInformation
+                .builder()
+                .userId(financialInformation.getUserId())
+                .income(financialInformation.getIncome())
+                .consuption(financialInformation.getConsuption())
+                .bankConsignements(financialInformation.getBankConsignements())
+                .assetsValue(financialInformation.getAssetsValue())
+                .liabilitiesValue(financialInformation.getLiabilitiesValue());
     }
 }

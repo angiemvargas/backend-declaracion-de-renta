@@ -20,27 +20,32 @@ public class FinancialInformationController {
     private JwtUtils jwtUtils;
 
     @PostMapping("/create")
-    public Mono<FinancialInformation> createFinancialInformation(@RequestBody FinancialInformation financialInformation){
-        return financialInformationUseCase.createFinancialInformation(financialInformation);
+    public Mono<FinancialInformation> createFinancialInformation(@RequestHeader ("authorization") String token, @RequestBody FinancialInformation financialInformation){
+        String username = getUsername(token);
+        return financialInformationUseCase.createFinancialInformation(financialInformation, username);
     }
 
     @PutMapping("/update")
-    public Mono<FinancialInformation> updateFinancialInformation(@RequestBody FinancialInformation financialInformation){
-        return financialInformationUseCase.updateFinancialInformation(financialInformation);
+    public Mono<FinancialInformation> updateFinancialInformation(@RequestHeader ("authorization") String token, @RequestBody FinancialInformation financialInformation){
+        String username = getUsername(token);
+        return financialInformationUseCase.updateFinancialInformation(financialInformation, username);
     }
 
     @GetMapping()
     public Mono<FinancialInformation> getFinancialInformation(@RequestHeader ("authorization") String token){
-        String jwt = token.substring(7, token.length());
-        String username = jwtUtils.getUserNameFromJwtToken(jwt);
+        String username = getUsername(token);
         return financialInformationUseCase.getFinancialInformationById(username);
     }
 
     @GetMapping("/validateDeclaration")
     public Mono<Boolean> validateDeclaration(@RequestHeader ("authorization") String token){
-        String jwt = token.substring(7, token.length());
-        String username = jwtUtils.getUserNameFromJwtToken(jwt);
+        String username = getUsername(token);
         return financialInformationUseCase.validateDeclaration(username);
+    }
+
+    private String getUsername(String token){
+        String jwt = token.substring(7, token.length());
+        return jwtUtils.getUserNameFromJwtToken(jwt);
     }
 
     //getEmailToken o id(retornar id) de infofinanciera
