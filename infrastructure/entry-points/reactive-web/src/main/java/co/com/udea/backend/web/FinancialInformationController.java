@@ -36,6 +36,13 @@ public class FinancialInformationController {
         return financialInformationUseCase.getFinancialInformationById(username);
     }
 
+    @GetMapping("/validateDeclaration")
+    public Mono<Boolean> validateDeclaration(@RequestHeader ("authorization") String token){
+        String jwt = token.substring(7, token.length());
+        String username = jwtUtils.getUserNameFromJwtToken(jwt);
+        return financialInformationUseCase.validateDeclaration(username);
+    }
+
     //getEmailToken o id(retornar id) de infofinanciera
     //endpoint de drive, crear carpeta, agregar archivos, get de archivos(lista de nombres o link)
     //endpoint usuario-numero documento, basado en los 2 ultimos digitos, buscar es StatementDate por documentEnd y retorne la fecha o todo el registro(get)

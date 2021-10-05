@@ -23,7 +23,7 @@ public class FinancialInformationAdapter implements FinancialInformationGateway 
 
     @Override
     public Mono<FinancialInformation> updateFinancialInformation(FinancialInformation financialInformation) {
-        return Mono.just(financialInformationRepository.findById(financialInformation.getUserId()).get())
+        return Mono.just(financialInformationRepository.findByUser_id(financialInformation.getUserId()))
                 .flatMap(infoData -> setInformacion(financialInformation, infoData))
                 .flatMap(infoUpdate -> Mono.just(financialInformationRepository.save(infoUpdate)))
                 .thenReturn(financialInformation);
@@ -31,8 +31,9 @@ public class FinancialInformationAdapter implements FinancialInformationGateway 
 
     @Override
     public Mono<FinancialInformation> getFinancialInformationById(Integer id) {
-        return Mono.just(financialInformationRepository.findById(id).orElse(new FinancialInformationData()))
-                .flatMap(this::mapperDataToDto);
+        return Mono.just(financialInformationRepository.findByUser_id(id))
+                .flatMap(this::mapperDataToDto)
+                .onErrorResume(error -> Mono.just(new FinancialInformation()));
     }
 
     private Mono<FinancialInformationData> setInformacion(FinancialInformation dto, FinancialInformationData data){

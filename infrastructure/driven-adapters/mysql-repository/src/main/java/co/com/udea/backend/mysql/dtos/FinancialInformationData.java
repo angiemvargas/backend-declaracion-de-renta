@@ -11,6 +11,8 @@ public class FinancialInformationData {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private Integer user_id;
 
     private Integer income;

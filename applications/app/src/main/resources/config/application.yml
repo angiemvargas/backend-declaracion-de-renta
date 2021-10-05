@@ -4,6 +4,9 @@ server:
 app:
   jwtSecret: declaracionRentaSecretKey
   jwtExpirationMs: 86400000
+  uvt:
+    4500: 160232000
+    1400: 49850000
 
 spring:
   main:
