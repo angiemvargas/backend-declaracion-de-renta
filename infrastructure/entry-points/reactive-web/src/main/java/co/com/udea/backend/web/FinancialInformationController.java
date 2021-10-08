@@ -48,9 +48,4 @@ public class FinancialInformationController {
         return jwtUtils.getUserNameFromJwtToken(jwt);
     }
 
-    //getEmailToken o id(retornar id) de infofinanciera
-    //endpoint de drive, crear carpeta, agregar archivos, get de archivos(lista de nombres o link)
-    //endpoint usuario-numero documento, basado en los 2 ultimos digitos, buscar es StatementDate por documentEnd y retorne la fecha o todo el registro(get)
-    //info financiera del usaurio comparar con requisitos para la declaracion y retornar true or false(declaracion)
-
 }
